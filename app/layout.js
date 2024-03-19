@@ -1,6 +1,7 @@
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </main>
+        <Toaster />
       </body>
     </html>
   );
