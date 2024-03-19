@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import InputText from "../inputs/input-text"
 import { Button } from "../ui/button"
 import { TextH3 } from "../ui/texts"
 import useNotify from "@/hooks/useNotify"
 import { validateEmail } from "@/lib/utils"
 import { useRouter } from "next/navigation"
+import { useAuth } from "@/context/authContext"
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -15,6 +16,13 @@ const Login = () => {
   })
   const { notify } = useNotify()
   const router = useRouter()
+  const { currentUser, handleUserToken } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push('/dashboard')
+    }
+  }, [currentUser, router])
 
   const handleLogin = async ({ email, password }) => {
     const response = await fetch('https://reqres.in/api/login', {
@@ -27,7 +35,7 @@ const Login = () => {
 
     if (response.ok) {
       const { token } = await response.json()
-      localStorage.setItem('my-assignment-token', token)
+      handleUserToken(token)
       router.push('/dashboard')
       notify('Login successful.', 'success')
     }
