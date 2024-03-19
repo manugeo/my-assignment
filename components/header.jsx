@@ -13,7 +13,7 @@ const Header = () => {
         </Avatar>
       </Link>
 
-      <MainNav className="mx-4" />
+      <MainNav className="hidden md:flex mx-4" />
 
       <Button className="ml-auto" asChild>
         <Link href="/login">Login</Link>

@@ -22,8 +22,9 @@ const Login = () => {
 
   return (
     <div className="flex-grow pb-6 flex flex-col justify-center items-center">
-      <form className="w-full max-w-sm pb-4" onSubmit={onLogin}>
+      <form className="w-full max-w-sm px-4 pb-4" onSubmit={onLogin}>
         <TextH3 className="mt-4 text-center">Sign In to Your Account</TextH3>
+
         <InputText className="mt-6" inputClassName="text-sm font-medium leading-none"
           label="Email" id="email" name="email" placeholder="Enter your email" type="email" required
           value={credentials.email} onChange={onInputChange} autoComplete="email" autoFocus />
