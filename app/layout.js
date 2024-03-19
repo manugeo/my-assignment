@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <main className={`min-h-screen bg-slate-50 ${robotoMono.variable} font-roboto-mono`}>
-          <div className='max-w-screen-xl mx-auto'>
+          <div className='max-w-screen-xl mx-auto min-h-screen flex flex-col'>
             <Header />
             {children}
           </div>
