@@ -1,6 +1,4 @@
-import Landing from "@/components/pages/landing";
 import { TextLead } from "@/components/ui/texts";
-import Image from "next/image";
 
 export default function Page() {
   return (
