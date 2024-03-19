@@ -1,9 +1,9 @@
-import { TextH3 } from "../ui/texts"
+import { TextLead } from "../ui/texts"
 
 const Landing = () => {
   return (
     <div className="pb-6 flex flex-col">
-      <TextH3 className="mt-6 mx-6">Landing Page</TextH3>
+      <TextLead className="mt-6 mx-6 text-center">Landing Page</TextLead>
     </div>
   )
 }
