@@ -27,7 +27,7 @@ const Login = () => {
 
     if (response.ok) {
       const { token } = await response.json()
-      localStorage.setItem('token', token)
+      localStorage.setItem('my-assignment-token', token)
       router.push('/dashboard')
       notify('Login successful.', 'success')
     }
