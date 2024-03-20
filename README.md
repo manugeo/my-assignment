@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## React Frontend Assignment
 
-## Getting Started
+This project is a React application developed with the Next.js framework. It includes features such as user authentication, a dashboard with dynamic graphs, and pagination functionality.
 
-First, run the development server:
+### Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Authentication:** Implements user authentication using a dummy [login API](https://reqres.in/).
+- **Dashboard Page:** Accessible only to authenticated users. Displays a Finance report with dynamic graphs.
+- **Pagination:** Enables dynamic pagination of data on the dashboard page.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Project Locally
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To run this project locally, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/manugeo/my-assignment.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate to the project directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   cd my-assignment
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Install dependencies:
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Start the development server:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   npm run dev
+   ```
+
+   The application will be accessible at http://localhost:3000.
+
+### Styling
+
+This project uses TailwindCSS for styling.
+
+### Deployment
+
+This project is deployed on Vercel and can be accessed using the following link: [https://my-assignment-for-sam-corporate.vercel.app/login](https://my-assignment-for-sam-corporate.vercel.app/login)
