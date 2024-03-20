@@ -18,7 +18,6 @@ ChartJS.register(
 )
 
 const CharityCategoryChart = ({ data, className, ...props }) => {
-  console.log({ data });
   const [chartData, setChartData] = useState(null)
   const [totalCharity, setTotalCharity] = useState(null)
 
