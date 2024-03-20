@@ -103,7 +103,11 @@ const Dashboard = () => {
           onNext={() => handlePageChange('next')} onPrevious={() => handlePageChange('previous')} />
         : null}
 
-      <RevenueProfitChart className="mt-6" data={dataToDisplay} maxRevenue={maxRevenue} />
+      <div className="mt-6 overflow-x-auto">
+        <div className="min-w-[720px] flex justify-center">
+          <RevenueProfitChart data={dataToDisplay} maxRevenue={maxRevenue} />
+        </div>
+      </div>
 
       <CharityCategoryChart className="mt-6 max-h-[300px]" data={charityDataToDisplay} />
 
