@@ -98,6 +98,11 @@ const Dashboard = () => {
     <div className="px-6 pb-6 flex flex-col">
       <TextH3 className="mt-6">Finance</TextH3>
 
+      {(currentPage && totalPages)
+        ? <PageButtons totalPages={totalPages} currentPage={currentPage} className="mt-6"
+          onNext={() => handlePageChange('next')} onPrevious={() => handlePageChange('previous')} />
+        : null}
+
       <RevenueProfitChart className="mt-6" data={dataToDisplay} maxRevenue={maxRevenue} />
 
       <CharityCategoryChart className="mt-6 max-h-[300px]" data={charityDataToDisplay} />
