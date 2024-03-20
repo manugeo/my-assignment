@@ -7,7 +7,7 @@ import {
 } from "chart.js"
 import { Skeleton } from "./ui/skeleton"
 import { useCallback, useEffect, useState } from "react"
-import { formatNumber } from "@/lib/utils"
+import { cn, formatNumber } from "@/lib/utils"
 
 ChartJS.register(
   CategoryScale,
@@ -22,39 +22,40 @@ ChartJS.register(
   BarController
 )
 
-const options = {
-  responsive: true,
-  type: 'bar',
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Revenue and Profit by Year and Month',
-    },
-  },
-  scales: {
-    x: {
-      title: {
-        display: true,
-        text: 'Year and Month',
-      }
-    },
-    y: {
-      title: {
-        display: true,
-        text: 'Revenue and Profit',
-      },
-      ticks: {
-        callback: (value) => formatNumber(value)
-      }
-    },
-  }
-}
-
-const RevenueProfitChart = ({ data }) => {
+const RevenueProfitChart = ({ data, className, maxRevenue = null, ...props }) => {
   const [chartData, setChartData] = useState(null)
+
+  const options = {
+    responsive: true,
+    type: 'bar',
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Revenue and Profit by Year and Month',
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Year and Month',
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Revenue and Profit',
+        },
+        ticks: {
+          callback: (value) => formatNumber(value)
+        },
+        suggestedMax: maxRevenue
+      },
+    }
+  }
 
   const prepareChartData = useCallback(() => {
     if (!data || !data.length) {
@@ -89,8 +90,8 @@ const RevenueProfitChart = ({ data }) => {
 
   return (
     (!data || !data.length || !chartData)
-      ? <Skeleton className={"w-full h-60 mt-6"} />
-      : <Bar data={chartData} options={options} />
+      ? <Skeleton className="w-full h-60 mt-6" {...props} />
+      : <Bar data={chartData} options={options} className={className} {...props} />
   )
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { TextH3 } from "../ui/texts"
 import { useAuth } from "@/context/authContext"
 import { useRouter } from "next/navigation"
@@ -12,9 +12,6 @@ const Dashboard = () => {
   const router = useRouter()
   const { currentUser } = useAuth()
   const { data } = useData()
-
-  console.log(data);
-
   const [currentPage, setCurrentPage] = useState(null)
   const [totalPages, setTotalPages] = useState(null)
   const [dataToDisplay, setDataToDisplay] = useState([])
@@ -22,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (!data && !data.length) {
       setCurrentPage(null)
-      setTotalPages(null) 
+      setTotalPages(null)
       setDataToDisplay([])
       return
     }
@@ -55,13 +52,27 @@ const Dashboard = () => {
     }
   }
 
+  const maxRevenue = useMemo(() => {
+    let maxRevenue = 0
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].revenue > maxRevenue) {
+        maxRevenue = data[i].revenue
+      }
+    }
+    console.log({ maxRevenue });
+
+    return maxRevenue
+  }, [data])
+
   return (
     <div className="px-6 pb-6 flex flex-col">
       <TextH3 className="mt-6">Finance</TextH3>
-      <RevenueProfitChart data={dataToDisplay} />
+      <RevenueProfitChart className="mt-6" data={dataToDisplay} maxRevenue={maxRevenue} />
 
-      {(currentPage && totalPages) && <PageButtons totalPages={totalPages} currentPage={currentPage}
-        onNext={() => handlePageChange('next')} onPrevious={() => handlePageChange('previous')} />}
+      {(currentPage && totalPages)
+        ? <PageButtons totalPages={totalPages} currentPage={currentPage} className="mt-6"
+          onNext={() => handlePageChange('next')} onPrevious={() => handlePageChange('previous')} />
+        : null}
     </div>
   )
 }

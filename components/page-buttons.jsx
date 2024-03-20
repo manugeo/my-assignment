@@ -2,9 +2,9 @@ import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, Pagi
 import { TextSmall } from "./ui/texts"
 
 
-const PageButtons = ({ totalPages = 10, currentPage = 1, onNext = () => { }, onPrevious = () => { } }) => {
+const PageButtons = ({ totalPages = 10, currentPage = 1, className, onNext = () => { }, onPrevious = () => { } }) => {
   return (
-    <Pagination>
+    <Pagination className={className}>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious className={`${(currentPage === 1) ? 'pointer-events-none' : ''}`} role="button" onClick={onPrevious} />
