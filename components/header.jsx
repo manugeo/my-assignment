@@ -10,7 +10,7 @@ const Header = () => {
   const { currentUser, logoutUser } = useAuth()
   return (
     <div className="w-full h-16 px-4 bg-slate-200 flex items-center">
-      <Link href='/'>
+      <Link href={currentUser ? '/dashboard' : '/'}>
         <Avatar>
           <AvatarImage src="/logo.png" />
           <AvatarFallback>SC</AvatarFallback>

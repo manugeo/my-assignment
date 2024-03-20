@@ -10,7 +10,7 @@ const useData = () => {
       // Simulate an asynchronous operation using setTimeout
       setTimeout(() => {
         resolve(FINANCE_DATA)
-      }, 1500)
+      }, 300)
     })
   }
 
